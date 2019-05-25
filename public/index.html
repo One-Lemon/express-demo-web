@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./layui-v2.4.5/layui/css/layui.css">
+    <title>登录</title>
+    <style>
+        #box {
+            width: 80%;
+            margin: 0 auto;
+            padding: 10px;
+            min-width: 700px;
+        }
+
+        #thead th {
+            text-align: center;
+        }
+
+        #page-box {
+            text-align: center;
+        }
+
+        #box-head {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #flex {
+            width: 50%;
+            display: flex;
+        }
+
+        #userIcon {
+            height: 38px;
+            width: 38px;
+            border-radius: 50%;
+        }
+
+        #admin {
+            line-height: 38px;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        #change {
+            margin-top: 2px;
+        }
+
+        #box .layui-layer-content {
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        #subIcon {
+            margin: 20px;
+        }
+
+        #inp-icon {
+            margin: 20px 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="box-head">
+            <button class="layui-btn  layui-btn-normal" id="addstu">新增学生</button>
+
+            <div class="layui-btn-container">
+                <img src="" alt="" id="userIcon">
+                <span id="admin"></span>
+                <button class="layui-btn layui-btn-sm  layui-btn-radius" id="change">修改</button>
+                <button class="layui-btn layui-btn-sm  layui-btn-radius layui-btn-danger" id="outlogin">退出</button>
+            </div>
+
+
+            <div id="flex">
+                <input type="text" name="title" id="search" placeholder="请输入搜索内容" autocomplete="off"
+                    class="layui-input">
+                <button class="layui-btn  layui-btn-warm" id="sub">搜索</button>
+            </div>
+        </div>
+
+        <table class="layui-table" lay-skin="line">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead id="thead">
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="my-tbody" style="text-align: center">
+
+            </tbody>
+        </table>
+        <div class="layui-btn-container" id="page-box">
+
+        </div>
+    </div>
+</body>
+
+<script type="text/html" id="tab-stu">
+    <% for(var i = 0; i < list.length;i++) { %>
+    <tr>
+        <td><%= i+1 %></td>
+        <td class="name"><%= list[i].stuname %></td>
+        <td><%= list[i].sex %></td>
+        <td><%= list[i].age %></td>
+        <td>
+            <button class="layui-btn layui-btn-sm  layui-btn-normal">编 辑</button>
+            <button class="layui-btn layui-btn-sm  layui-btn-danger del">删 除</button>
+        </td>
+    </tr>
+    <% } %>
+</script>
+
+
+<script type="text/html" id="page-btn">
+    <button class="layui-btn layui-btn-xs layui-btn-primary" data-num=<%= pageNum-1 < 1 ? 1 : pageNum-1 %>>上一页</button>
+    <% for(var i = 0; i < totalPage;i ++){ %>
+    <button class="layui-btn layui-btn-xs layui-btn-primary <%= (i+1) === pageNum?'layui-btn-normal':'' %> "
+        data-num=<%= i+1 %>> <%= i+1 %></button>
+    <% } %>
+    <button class="layui-btn layui-btn-xs layui-btn-primary"
+        data-num=<%= pageNum+1 > totalPage ? totalPage : pageNum+1 %>>下一页</button>
+</script>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+<script src="./layui-v2.4.5/layui/layui.all.js"></script>
+<script src="./js/ejs.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/myjs.js"></script>
+<script>
+
+</script>
+
+</html>
